@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>xeokit Example</title>
+    <link href="../css/pageStyle.css" rel="stylesheet"/>
+    <style>
+        #sliderContainer {
+            height: 100%;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            right: 0;
+        }
+        input {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<div id="sliderContainer">
+    <p>Sliders</p>
+    <label>
+        Canvas resolution
+        <input id="canvasResolution" type="range" min="0.00" max="2.00" value="1.00" step="0.01">
+        <a id="canvasResolutionValue">1.00</a>
+    </label>
+</div>
+</body>
+<script type="module">
+    import {Viewer, XKTLoaderPlugin} from "../dist/xeokit-sdk.js";
+
+    const viewer = new Viewer({
+        canvasId: "myCanvas",
+        transparent: true,
+    });
+
+    const xktLoader = new XKTLoaderPlugin(viewer);
+    const sceneModel = xktLoader.load({
+        id: "myId",
+        src: "../../assets/models/xkt/v10/glTF-Embedded/Duplex_A_20110505.glTFEmbedded.xkt",
+        edges: true,
+    });
+
+    sceneModel.on("loaded", function () {
+        viewer.cameraFlight.jumpTo({
+            aabb: sceneModel.aabb
+        });
+    });
+
+    let canvasResolution = 1.0;
+    const canvasResolutionDisplay = document.getElementById('canvasResolutionValue')
+    document.getElementById("canvasResolution").oninput = function() {
+        canvasResolution = Number(document.getElementById("canvasResolution").value);
+        viewer.scene.canvas.resolutionScale = canvasResolution;
+        canvasResolutionDisplay.textContent = canvasResolution.toFixed(2);
+    };
+
+    window.viewer = viewer;
+</script>
+</html>
