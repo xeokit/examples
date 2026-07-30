@@ -1,0 +1,78 @@
++src/vendor/xeokit-deps.js
+diff --git a/index.js b/index.js
+index e6918d588..0bce8d92f 100644
+--- a/index.js
++++ b/index.js
+@@ -1 +1 @@
+-export * from './src'
+\ No newline at end of file
++export * from './src/index.js'
+\ No newline at end of file
+diff --git a/package.json b/package.json
+index 8a6ebc5a0..afd77a2cc 100644
+--- a/package.json
++++ b/package.json
+@@ -8,7 +8,8 @@
+   "scripts": {
+     "build":     "node -e \"console.error('WARNING: \\'npm run {build,dev-build,test}\\' scripts and \\'devDependencies\\' are soon going to be deprecated. Install a build tool and execute it directly.\\n');\"; rollup --config rollup.config.js; rollup --config rollup.minified.config.js",
+     "dev-build": "node -e \"console.error('WARNING: \\'npm run {build,dev-build,test}\\' scripts and \\'devDependencies\\' are soon going to be deprecated. Install a build tool and execute it directly.\\n');\"; rollup --config rollup.dev.config.js",
+-    "test":      "node -e \"console.error('WARNING: \\'npm run {build,dev-build,test}\\' scripts and \\'devDependencies\\' are soon going to be deprecated. Install a test tool and execute it directly.\\n');\"; npx percy exec -- npx playwright test"
++    "test":      "node -e \"console.error('WARNING: \\'npm run {build,dev-build,test}\\' scripts and \\'devDependencies\\' are soon going to be deprecated. Install a test tool and execute it directly.\\n');\"; npx percy exec -- npx playwright test",
++    "vendor":    "rollup -c rollup.vendor.config.js"
+   },
+   "repository": {
+     "type": "git",
+diff --git a/src/external.js b/src/external.js
+index 8d357f6ef..bdfd1fefb 100644
+--- a/src/external.js
++++ b/src/external.js
+@@ -1,4 +1 @@
+-export { parse } from "@loaders.gl/core";
+-export { GLTFLoader, postProcessGLTF } from "@loaders.gl/gltf";
+-export { LASLoader } from "@loaders.gl/las";
+-export { default as html2canvas } from "html2canvas/dist/html2canvas.esm.js";
++export { parse, GLTFLoader, postProcessGLTF, LASLoader, html2canvas } from "./vendor/xeokit-deps.js";
+diff --git a/src/viewer/scene/sectionPlane/SectionPlaneCache.js b/src/viewer/scene/sectionPlane/SectionPlaneCache.js
+index d2acad3c9..1e2672b42 100644
+--- a/src/viewer/scene/sectionPlane/SectionPlaneCache.js
++++ b/src/viewer/scene/sectionPlane/SectionPlaneCache.js
+@@ -1,6 +1,6 @@
+ import {Component} from '../Component.js';
+ import {math} from "../math/math.js";
+-import {SectionPlane} from "./SectionPlane";
++import {SectionPlane} from "./SectionPlane.js";
+ 
+ const tempVec3a = math.vec3();
+ 
+diff --git a/rollup.vendor.config.js b/rollup.vendor.config.js
+new file mode 100644
+index 000000000..7f26af5da
+--- /dev/null
++++ b/rollup.vendor.config.js
+@@ -0,0 +1,16 @@
++import { nodeResolve } from '@rollup/plugin-node-resolve';
++
++export default {
++    input: './src/vendor/entry.js',
++    output: {
++        file: './src/vendor/xeokit-deps.js',
++        format: 'es',
++    },
++    onwarn(warning, warn) {
++        if (warning.code === 'MISSING_EXPORT') return;
++        warn(warning);
++    },
++    plugins: [
++        nodeResolve({ browser: true, preferBuiltins: false }),
++    ],
++};
+diff --git a/src/vendor/entry.js b/src/vendor/entry.js
+new file mode 100644
+index 000000000..8d357f6ef
+--- /dev/null
++++ b/src/vendor/entry.js
+@@ -0,0 +1,4 @@
++export { parse } from "@loaders.gl/core";
++export { GLTFLoader, postProcessGLTF } from "@loaders.gl/gltf";
++export { LASLoader } from "@loaders.gl/las";
++export { default as html2canvas } from "html2canvas/dist/html2canvas.esm.js";
