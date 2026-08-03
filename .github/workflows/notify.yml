@@ -1,7 +1,5 @@
 name: Notify xeokit-sdk
 
-# Lets xeokit/xeokit-sdk know this repo moved, so it can kick off its own CI
-# (e.g. to catch examples that no longer work against the latest SDK).
 on:
   push:
     branches:
