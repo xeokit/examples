@@ -3,7 +3,7 @@ name: Notify xeokit-sdk
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   notify:
