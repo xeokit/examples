@@ -17,17 +17,17 @@
   <button style="position: absolute; left: 10px; top: 340px; width: 200px; height:  50px;" id="creoox-logo"></button>
   <button style="position: absolute; left: 10px; top: 410px; width: 200px; height:  38px;" id="xeokit-logo"></button>
   <div class="slideout-sidebar">
-    <img class="info-icon" src="../../assets/images/annotation_icon.png"/>
+    <img class="info-icon" src="../assets/images/annotation_icon.png"/>
     <h1>2D markup example</h1>
     <h2>Select an icon or drag an image to create a 2D markup mesh. Use middle mouse button to place it wherever you want.</h2>
     <h3>Components Used</h3>
     <ul>
       <li>
-        <a href="../../docs/class/src/viewer/Viewer.js~Viewer.html"
+        <a href="../docs/class/src/viewer/Viewer.js~Viewer.html"
            target="_other">Viewer</a>
       </li>
       <li>
-        <a href="../../docs/class/src/plugins/XKTLoaderPlugin/XKTLoaderPlugin.js~XKTLoaderPlugin.html"
+        <a href="../docs/class/src/plugins/XKTLoaderPlugin/XKTLoaderPlugin.js~XKTLoaderPlugin.html"
            target="_other">XKTLoaderPlugin</a>
       </li>
     </ul>
@@ -52,7 +52,7 @@ import {
     transformToNode,
     Viewer,
     XKTLoaderPlugin,
-} from "../../dist/xeokit-sdk.min.es.js";
+} from "../dist/xeokit-sdk.js";
 
 const canvas = window.document.getElementById("myCanvas");
 
@@ -64,7 +64,7 @@ viewer.camera.up   = [  0, 1,  0 ];
 
 new XKTLoaderPlugin(viewer).load({
     id: "myModel",
-    src: "../../assets/models/xkt/v10/glTF-Embedded/Duplex_A_20110505.glTFEmbedded.xkt",
+    src: "../assets/models/xkt/v10/glTF-Embedded/Duplex_A_20110505.glTFEmbedded.xkt",
     edges: true,
 }).on("loaded", () => viewer.cameraFlight.flyTo());
 

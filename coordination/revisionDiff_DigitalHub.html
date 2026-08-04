@@ -70,7 +70,7 @@
 <label for="info-button" class="info-button"><i class="far fa-3x fa-question-circle"></i></label>
 <canvas id="myCanvas"></canvas>
 <div class="slideout-sidebar">
-    <img class="info-icon" src="../../assets/images/bim_icon.png"/>
+    <img class="info-icon" src="../assets/images/bim_icon.png"/>
     <h1>Model Revision Diff</h1>
     <h2>DigitalHub FM-ARC &mdash; v1 vs v2</h2>
     <p>Compares two revisions of the FM-ARC model. Switch between <strong>Geometry</strong> (objects
@@ -152,11 +152,11 @@
     <h3>Components Used</h3>
     <ul>
         <li>
-            <a href="../../docs/class/src/viewer/Viewer.js~Viewer.html"
+            <a href="../docs/class/src/viewer/Viewer.js~Viewer.html"
                target="_other">Viewer</a>
         </li>
         <li>
-            <a href="../../docs/class/src/plugins/XKTLoaderPlugin/XKTLoaderPlugin.js~XKTLoaderPlugin.html"
+            <a href="../docs/class/src/plugins/XKTLoaderPlugin/XKTLoaderPlugin.js~XKTLoaderPlugin.html"
                target="_other">XKTLoaderPlugin</a>
         </li>
     </ul>
@@ -171,7 +171,7 @@
 </body>
 <script type="module">
 
-    import {Viewer, XKTLoaderPlugin} from "../../dist/xeokit-sdk.min.es.js";
+    import {Viewer, XKTLoaderPlugin} from "../dist/xeokit-sdk.js";
 
     //------------------------------------------------------------------------------------------------------------------
     // 1. Create a Viewer
@@ -194,8 +194,8 @@
     document.getElementById("time").innerHTML = "Fetching metadata...";
 
     const [v1Json, v2Json] = await Promise.all([
-        fetch("../../assets/models/xkt/v12/compressed/FM_ARC_DigitalHub_v1.json").then(r => r.json()),
-        fetch("../../assets/models/xkt/v12/compressed/DigitalHub_FM-ARC_v2.json").then(r => r.json())
+        fetch("../assets/models/xkt/v12/compressed/FM_ARC_DigitalHub_v1.json").then(r => r.json()),
+        fetch("../assets/models/xkt/v12/compressed/DigitalHub_FM-ARC_v2.json").then(r => r.json())
     ]);
 
     const v1ObjMap = new Map(v1Json.metaObjects.map(o => [o.id, o]));
@@ -282,8 +282,8 @@
     //------------------------------------------------------------------------------------------------------------------
 
     const xktLoader = new XKTLoaderPlugin(viewer);
-    const V1_XKT = "../../assets/models/xkt/v12/compressed/FM_ARC_DigitalHub_v1.xkt";
-    const V2_XKT = "../../assets/models/xkt/v12/compressed/DigitalHub_FM-ARC_v2.xkt";
+    const V1_XKT = "../assets/models/xkt/v12/compressed/FM_ARC_DigitalHub_v1.xkt";
+    const V2_XKT = "../assets/models/xkt/v12/compressed/DigitalHub_FM-ARC_v2.xkt";
 
     document.getElementById("time").innerHTML = "Loading v2 model...";
     const t0 = performance.now();

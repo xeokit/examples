@@ -286,7 +286,7 @@
 </div>
 
 <div class="slideout-sidebar">
-    <img class="info-icon" src="../../assets/images/bim_icon.png"/>
+    <img class="info-icon" src="../assets/images/bim_icon.png"/>
     <h1>Clash Detection Viewer</h1>
     <h2>Visualizing pre-computed IfcClash results with BCF viewpoint export</h2>
     <p>
@@ -301,18 +301,18 @@
     <h3>Components Used</h3>
     <ul>
         <li>
-            <a href="../../docs/class/src/viewer/Viewer.js~Viewer.html" target="_other">Viewer</a>
+            <a href="../docs/class/src/viewer/Viewer.js~Viewer.html" target="_other">Viewer</a>
         </li>
         <li>
-            <a href="../../docs/class/src/plugins/XKTLoaderPlugin/XKTLoaderPlugin.js~XKTLoaderPlugin.html"
+            <a href="../docs/class/src/plugins/XKTLoaderPlugin/XKTLoaderPlugin.js~XKTLoaderPlugin.html"
                target="_other">XKTLoaderPlugin</a>
         </li>
         <li>
-            <a href="../../docs/class/src/plugins/BCFViewpointsPlugin/BCFViewpointsPlugin.js~BCFViewpointsPlugin.html"
+            <a href="../docs/class/src/plugins/BCFViewpointsPlugin/BCFViewpointsPlugin.js~BCFViewpointsPlugin.html"
                target="_other">BCFViewpointsPlugin</a>
         </li>
         <li>
-            <a href="../../docs/class/src/plugins/AnnotationsPlugin/AnnotationsPlugin.js~AnnotationsPlugin.html"
+            <a href="../docs/class/src/plugins/AnnotationsPlugin/AnnotationsPlugin.js~AnnotationsPlugin.html"
                target="_other">AnnotationsPlugin</a>
         </li>
     </ul>
@@ -337,7 +337,7 @@
 
 <script type="module">
 
-    import {Viewer, XKTLoaderPlugin, BCFViewpointsPlugin, AnnotationsPlugin} from "../../dist/xeokit-sdk.min.es.js";
+    import {Viewer, XKTLoaderPlugin, BCFViewpointsPlugin, AnnotationsPlugin} from "../dist/xeokit-sdk.js";
 
     //------------------------------------------------------------------------------------------------------------------
     // Create Viewer
@@ -796,13 +796,13 @@
 
     const arcModel = xktLoader.load({
         id: "DigitalHub_ARC",
-        src: "../../assets/models/xkt/v12/compressed/DigitalHub_FM-ARC_v2.xkt",
+        src: "../assets/models/xkt/v12/compressed/DigitalHub_FM-ARC_v2.xkt",
         edges: true
     });
 
     const hzgModel = xktLoader.load({
         id: "DigitalHub_HZG",
-        src: "../../assets/models/xkt/v12/compressed/DigitalHub_FM-HZG_v2.xkt",
+        src: "../assets/models/xkt/v12/compressed/DigitalHub_FM-HZG_v2.xkt",
         edges: true
     });
 
