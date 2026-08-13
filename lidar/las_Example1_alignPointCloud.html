@@ -163,6 +163,11 @@
             edges: true
         });
 
+        bimSceneModel.on("loaded", () => {
+            viewer.cameraFlight.jumpTo({
+                aabb: bimSceneModel.aabb
+            });
+        });
     });
 
     const lasLoaderPlugin = new LASLoaderPlugin(viewer, {
