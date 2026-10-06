@@ -28,7 +28,7 @@
         {
             "imports": {
                 "@xeokit/xeokit-sdk": "../dist/xeokit-sdk.js",
-                "@xeokit/sdk-plugins-walk-mode": "https://cdn.jsdelivr.net/npm/@xeokit/sdk-plugins/node_modules/@xeokit/sdk-plugins-walk-mode/dist/index.js"
+                "@xeokit/sdk-plugins": "https://cdn.jsdelivr.net/npm/@xeokit/sdk-plugins/dist/registry.js",
             }
         }
     </script>
@@ -91,7 +91,7 @@
     //------------------------------------------------------------------------------------------------------------------
 
     import {Viewer, XKTLoaderPlugin} from "@xeokit/xeokit-sdk";
-    import {WalkModePlugin} from "@xeokit/sdk-plugins-walk-mode";
+    import {WalkModePlugin} from "@xeokit/sdk-plugins";
 
     //------------------------------------------------------------------------------------------------------------------
     // 1. Create a Viewer,
