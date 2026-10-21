@@ -1,13 +1,4 @@
 +src/vendor/xeokit-deps.js
-diff --git a/index.js b/index.js
-index e6918d588..0bce8d92f 100644
---- a/index.js
-+++ b/index.js
-@@ -1 +1 @@
--export * from './src'
-\ No newline at end of file
-+export * from './src/index.js'
-\ No newline at end of file
 diff --git a/package.json b/package.json
 index 8a6ebc5a0..afd77a2cc 100644
 --- a/package.json
